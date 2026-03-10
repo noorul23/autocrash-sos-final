@@ -139,14 +139,6 @@ When an accident is detected:
 
 ---
 
-# ⚠️ Limitations
-
-• Uses SIM800L GSM module (network dependent)  
-• Airbag mechanism is simulated using air pump  
-• Prototype designed for demonstration and research purposes
-
----
-
 # 👥 Contributors
 
 This was a **team project** completed collaboratively.
@@ -160,13 +152,6 @@ This was a **team project** completed collaboratively.
 
 ## License
 This project is licensed under->[MIT License](https://github.com/noorul23/autocrash-sos-final/blob/main/LICENSE), please check it out before using this resource.
-
----
-
-## 👨‍💻 Contributors
-
-- **[Noorul Hassan](https://github.com/noorul23)**
-- **[Muhammad Thahir](https://github.com/Thahir25)**
 
 ---
 
