@@ -6,6 +6,8 @@ This system detects collision events using a **detachable circuit loop trigger p
 
 The project was developed using ESP32, GSM communication, GPS and a physical airbag-inspired trigger prototype.
 
+[Demo Video](https://drive.google.com/drive/folders/1peWZCnHHTrS0PTfMyoLVZrSecXcTdXbz?usp=sharing)
+
 ---
 
 # 🧠 Core Idea
