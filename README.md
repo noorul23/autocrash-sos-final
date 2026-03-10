@@ -1,19 +1,19 @@
 # 🚗 AutoCrash SOS – Final Version
 
-AutoCrash SOS is an Autonomous accident detection and emergency alert system inspired by the **real airbag deployment mechanism used in vehicles**.
+AutoCrash SOS is an autonomous accident detection and emergency alert system inspired by the **real airbag deployment mechanism used in modern vehicles**.
 
-This system detects collision events using a **detachable circuit loop trigger which placed on top of airbag**, and automatically sends emergency alerts including GPS location to family members and ambulance app.
+This system detects collision events using a **detachable circuit loop trigger placed above the airbag**, and automatically sends emergency alerts with GPS location to family members and ambulance application.
 
-The project was developed using ESP32, GSM, GPS and a physical airbag-inspired trigger prototype.
+The project was developed using ESP32, GSM communication, GPS and a physical airbag-inspired trigger prototype.
 
 ---
 
 # 🧠 Core Idea
 
 vehicles deploy airbags during severe collisions.  
-When the airbag deploys, circuit loop brakes due to the deployment pressure.
+When the airbag deploys, internal mechanical structures move or break due to deployment pressure.
 
-this project implements a **detachable conductive loop placed above the steering area**.
+Inspired by this mechanism, this project implements a detachable conductive loop placed above the steering airbag area.
 
 ### Trigger Concept
 
@@ -136,16 +136,16 @@ When an accident is detected:
 
 • SMS sent with GPS coordinates  
 • Phone call placed to emergency contact  
-• Alert logged and shared with ambulance response app  
+• Alert logged and shared with ambulance response application  
 
 ---
 
 # 👥 Contributors
 
-This was a **team project** completed collaboratively.
+This project was developed collaboratively.
 
 - ### Hardware - **[Noorul Hassan](https://github.com/noorul23)**  
-- ### Software - **[Muhammad Thahir](https://github.com/Thahir25)**  
+- ### Software (Ambulance App) - **[Muhammad Thahir](https://github.com/Thahir25)**  
 
 
 
