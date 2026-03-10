@@ -1,6 +1,6 @@
 # 🚗 AutoCrash SOS – Final Version
 
-AutoCrash SOS is an embedded accident detection and emergency alert system inspired by the **real airbag deployment mechanism used in vehicles**.
+AutoCrash SOS is an Autonomous accident detection and emergency alert system inspired by the **real airbag deployment mechanism used in vehicles**.
 
 This system detects collision events using a **detachable circuit loop trigger which placed on top of airbag**, and automatically sends emergency alerts including GPS location to family members and ambulance app.
 
@@ -48,6 +48,12 @@ The system integrates sensors, communication modules, and emergency notification
    - SMS + Call sent via GSM
    - Alert sent to ambulance response application
 
+
+---
+
+# 🔌 Circuit Diagram
+![Circuit](hardware/circuit_diagram.png)
+
 ---
 
 # 🔧 Hardware Components
@@ -84,11 +90,6 @@ Power
 • 12V supply
 • LM2596 Buck Converter
 • 18650 Li-ion battery for GSM module
-
----
-
-# 🔌 Circuit Diagram
-![Circuit](hardware/circuit_diagram.png)
 
 ---
 
