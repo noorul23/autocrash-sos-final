@@ -1,2 +1,8 @@
-Autocrash prototype working demo:
-google drive link: https://drive.google.com/drive/folders/1peWZCnHHTrS0PTfMyoLVZrSecXcTdXbz?usp=sharing
+Demo Videos:
+
+1. Accident trigger demonstration
+2. Ambulance app response
+3. Serial monitor output
+
+Google Drive Link:
+https://drive.google.com/drive/folders/1peWZCnHHTrS0PTfMyoLVZrSecXcTdXbz?usp=sharing
