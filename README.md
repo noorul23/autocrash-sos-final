@@ -1,161 +1,227 @@
-# 🚗 AutoCrash SOS – Final Version
+# AutoCrash SOS – IoT-Based Autonomous Crash Alert System
 
-AutoCrash SOS is an autonomous accident detection and emergency alert system inspired by the **real airbag deployment mechanism used in modern vehicles**.
+An IoT-based accident detection and emergency alert system developed using ESP32, SIM800L, and Neo-6M GPS. The system uses an airbag-inspired circuit-break mechanism for collision detection and emergency alert activation, with GPS-based emergency notifications sent to predefined contacts and a companion Android application.
 
-This system detects collision events using a **detachable circuit loop trigger placed above the airbag**, and automatically sends emergency alerts with GPS location to family members and ambulance application.
+## Overview
 
-The project was developed using ESP32, GSM communication, GPS and a physical airbag-inspired trigger prototype.
+AutoCrash SOS was developed as an embedded IoT system combining collision detection, physical actuation, GPS location acquisition, GSM communication, and mobile-based emergency notification.
 
-[Demo Video](https://drive.google.com/drive/folders/1peWZCnHHTrS0PTfMyoLVZrSecXcTdXbz?usp=sharing)
+The system was developed from an initial internship prototype and subsequently extended into a hardware-based implementation with an airbag-inspired circuit-break mechanism, prototype hardware, PCB design, and an ambulance response application.
 
----
+## Problem / Motivation
 
-# 🧠 Core Idea
+In a vehicle accident, detecting a collision and communicating the location of the incident quickly can be important for initiating emergency assistance.
 
-vehicles deploy airbags during severe collisions.  
-When the airbag deploys, internal mechanical structures move or break due to deployment pressure.
+The project explores an embedded approach in which a collision event activates a physical trigger mechanism and automatically initiates location-based emergency communication.
 
-Inspired by this mechanism, this project implements a detachable conductive loop placed above the steering airbag area.
+## System / Solution
 
-### Trigger Concept
+The system uses an ESP32 as the primary controller.
 
-• A conductive jumper wire forms a closed circuit loop  
-• When the simulated airbag deploys, the wire disconnects  
-• The loop breaks → logic changes to **Collision = 0**  
-• ESP32 detects this state and triggers emergency alert
+A YL-99 impact sensor initiates the collision sequence, after which an airbag-inspired mechanism is activated using an air pump. A detachable conductive circuit loop is used as the collision confirmation mechanism. When the simulated airbag deployment causes the loop to break, the ESP32 detects the change in circuit state and proceeds with the emergency alert sequence.
 
-This provides a **simple and reliable hardware trigger for accident detection**.
+A buzzer provides a short cancellation period for the driver. If the alert is not cancelled, the system retrieves GPS coordinates and uses the SIM800L GSM module to transmit emergency notifications.
 
----
+The system also communicates the accident information to a companion ambulance response application, where the reported accident location and allocation status can be viewed.
 
-# ⚙️ System Architecture
-![Architecture](hardware/architecture.png)
+## Key Features
 
-The system integrates sensors, communication modules, and emergency notification services.
+- ESP32-based accident detection and control
+- Airbag-inspired circuit-break mechanism for collision detection
+- YL-99 impact sensor for collision triggering
+- Physical airbag deployment simulation using an air pump
+- GPS-based location acquisition using Neo-6M
+- GSM-based emergency communication using SIM800L
+- SMS and phone-call emergency alerts
+- Driver alert cancellation through a push button
+- Buzzer-based alert countdown
+- Emergency alert sharing with a companion ambulance application
+- Prototype PCB design and hardware integration
 
----
+## System Architecture
 
-# 🔄 System Flow
-![Flowchart](hardware/system_flowchart.png)
+![System Architecture](hardware/architecture.png)
 
-1. System powers ON
-2. Device enters idle state
-3. Impact detected via YL-99 collision sensor
-4. Air pump activates to simulate airbag deployment
-5. Detachable loop breaks
-6. Collision confirmed
-7. Buzzer countdown allows driver to cancel alert
-8. If not cancelled:
-   - GPS coordinates retrieved
-   - SMS + Call sent via GSM
-   - Alert sent to ambulance response application
+The system integrates the collision detection mechanism, ESP32 controller, GPS, GSM communication, physical actuation, and the ambulance response application.
 
+## System Flow
 
----
+![System Flow](hardware/system_flowchart.png)
 
-# 🔌 Circuit Diagram
-![Circuit](hardware/circuit_diagram.png)
+1. System powers on and enters the idle state.
+2. A collision event is detected through the YL-99 impact sensor.
+3. The air pump is activated to simulate airbag deployment.
+4. The detachable circuit loop breaks during the deployment sequence.
+5. The ESP32 detects the circuit-break condition and confirms the collision event.
+6. The buzzer starts a short alert period.
+7. The driver can cancel the alert using the push button.
+8. If the alert is not cancelled, the system retrieves the GPS location.
+9. Emergency notifications are transmitted through the SIM800L GSM module.
+10. The accident information is also made available to the ambulance response application.
 
----
+## Circuit Design
 
-# 🔧 Hardware Components
+### Circuit Diagram
 
-Main controller
+![Circuit Diagram](hardware/circuit_diagram.png)
 
-• ESP32
+### Schematic
 
-Communication
+The schematic documents the controller, power conversion, GSM, GPS, buzzer, motor driver, push button, and circuit-break interfaces used in the prototype.
 
-• SIM800L GSM module
+![Schematic](hardware/Schematic_Autocrash.png)
 
-Location
+## Hardware Components
 
-• Neo-6M GPS module
+### Controller
+- ESP32
 
-Collision Detection
+### Communication
+- SIM800L GSM Module
 
-• YL-99 Impact Sensor
-• Circuit break loop (detachable wire)
+### Location
+- Neo-6M GPS Module
 
-Actuation
+### Collision Detection
+- YL-99 Impact Sensor
+- Detachable circuit-break loop
 
-• L298N Motor Driver
-• 6V Air Pump (airbag simulation)
+### Actuation
+- L298N Motor Driver
+- 6V Air Pump
 
-User Interaction
+### User Interaction
+- Push Button
+- Buzzer
 
-• Push Button (manual cancel)
-• Buzzer
+### Power
+- 12V Power Supply
+- LM2596 Buck Converter
+- 18650 Li-ion Battery
 
-Power
+## Prototype Hardware
 
-• 12V supply
-• LM2596 Buck Converter
-• 18650 Li-ion battery for GSM module
+The system was assembled and tested as a physical prototype before developing the PCB design.
 
----
+### Prototype Setup
 
-# 🧪 Prototype Hardware
+![Prototype Setup](images/prototype_setup.jpg)
 
-### Hardware Setup
-![Prototype](images/prototype_setup.jpg)
+### Prototype Wiring
 
-### PCB Wiring
-![PCB](images/pcb_backside.jpg)
+![Prototype Wiring](images/pcb_backside.jpg)
 
----
+## PCB Design
 
-# 📱 Ambulance Response App
+A PCB design was developed to integrate the major components of the system into a more structured hardware layout.
 
-The system also sends accident alerts to a mobile application used by ambulance drivers.
+The PCB shown in this repository represents the design and prototype stage of the project and is not presented as a manufactured production board.
 
-### App Interface
-![App1](images/ambulance_app_1.jpg)
+### PCB Layout
 
-![App2](images/ambulance_app_2.jpg)
+![PCB Layout](hardware/PCB_Autocrash.png)
 
-The app displays:
+### 3D PCB View
 
-• Accident location  
-• Allocation status  
-• Navigation option to reach accident site via google maps  
+![3D PCB View](hardware/Autocrash_3D_PCB.png)
 
----
+## Ambulance Response Application
 
-# 📡 System Output
+A companion Android application was developed to receive and display GPS-based emergency alerts.
 
-### Successful Alert Trigger
-![Alert](images/serial_monitor_alert.png)
+The application provides an interface for viewing reported accident locations, allocation status, and navigation to the reported location.
 
-### Driver Cancel Scenario
-![Cancel](images/serial_monitor_cancel.png)
+### Application Interface
 
----
+![Ambulance Application](images/ambulance_app_1.jpg)
 
-# 🚨 Emergency Alert Features
+![Nearby Accidents](images/ambulance_app_2.jpg)
 
-When an accident is detected:
+## System Output
 
-• SMS sent with GPS coordinates  
-• Phone call placed to emergency contact  
-• Alert logged and shared with ambulance response application  
+### Emergency Alert Trigger
 
----
+The serial output demonstrates the system detecting the collision sequence, confirming the circuit-break condition, and initiating GSM communication and application logging.
 
-# 👥 Contributors
+![Emergency Alert Output](images/serial_monitor_alert.png)
 
-This project was developed collaboratively.
+### Alert Cancellation
 
-- ### Hardware - **[Noorul Hassan](https://github.com/noorul23)**  
-- ### Software (Ambulance App) - **[Muhammad Thahir](https://github.com/Thahir25)**  
+The system also provides a cancellation path that allows the driver to cancel the emergency alert during the alert period.
 
+![Alert Cancellation Output](images/serial_monitor_cancel.png)
 
+## Emergency Alert Sequence
 
----
+When an accident is confirmed and the alert is not cancelled:
 
-## License
+- GPS coordinates are acquired.
+- An SMS alert is transmitted through the SIM800L module.
+- A phone call is initiated to the predefined emergency contact.
+- The accident information is logged and shared with the companion ambulance response application.
+
+## Implementation
+
+The firmware implements the system control sequence, including:
+
+- collision event detection
+- air pump activation
+- circuit-break monitoring
+- buzzer timing
+- alert cancellation
+- GPS coordinate acquisition
+- GSM communication
+- emergency alert transmission
+- communication with the application backend
+
+The main firmware source is available in the `firmware/` directory.
+
+## Project Contribution
+
+Hardware — - **[Noorul Hassan](https://github.com/noorul23)**  
+
+-	Hardware integration 
+-	Firmware development 
+-	Circuit troubleshooting 
+-	PCB prototyping 
+-	System testing 
+
+Software — **[Muhammad Thahir](https://github.com/Thahir25)**
+
+-	Ambulance response application
+
+## Future Improvements
+
+Potential future improvements include further hardware refinement, integration, and testing of the prototype for practical deployment scenarios.
+
+License
+
 This project is licensed under->[MIT License](https://github.com/noorul23/autocrash-sos-final/blob/main/LICENSE), please check it out before using this resource.
 
----
+## Repository Structure
 
-If you find this project useful, feel free to ⭐ the repository!
+```text
+autocrash-sos-final/
+│
+├── firmware/
+│   └── AutoCrash SOS firmware
+│
+├── hardware/
+│   ├── architecture
+│   ├── system flowchart
+│   ├── circuit diagram
+│   ├── schematic
+│   ├── PCB design
+│   └── 3D PCB view
+│
+├── images/
+│   ├── prototype images
+│   ├── application screenshots
+│   └── system output
+│
+├── media/
+│   └── demo video reference
+│
+├── LICENSE
+└── README.md
+
