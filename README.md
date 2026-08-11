@@ -206,6 +206,7 @@ autocrash-sos-final/
 |
 |── docs/
 │   └── AutoCrash SOS technical report
+|
 ├── firmware/
 │   └── AutoCrash SOS firmware
 │
