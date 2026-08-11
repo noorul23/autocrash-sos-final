@@ -203,6 +203,9 @@ This project is licensed under->[MIT License](https://github.com/noorul23/autocr
 ```text
 autocrash-sos-final/
 │
+|
+|── docs/
+│   └── AutoCrash SOS technical report
 ├── firmware/
 │   └── AutoCrash SOS firmware
 │
